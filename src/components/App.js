@@ -1,7 +1,7 @@
 <p>Now I can render any React component on any DOM node I want using ReactDOM.render</p>
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-import "./styles.css";
+import "./app.css";
 
 const MarkdownEditor = () => {
   const [markdown, setMarkdown] = useState("");
