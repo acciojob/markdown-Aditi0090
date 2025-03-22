@@ -1,29 +1,37 @@
-<p>Now I can render any React component on any DOM node I want using ReactDOM.render</p>
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-import "./app.css";
+import "./App.css";
 
-const MarkdownEditor = () => {
+function Markdown() {
   const [markdown, setMarkdown] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  const handleChange = (e) => {
+    setMarkdown(e.target.value);
+  };
+
+  const changeLoadingVar = () => {
+    setLoading(false);
+  };
 
   useEffect(() => {
-    // This effect updates the preview in real-time when markdown changes.
-  }, [markdown]);
+    setTimeout(changeLoadingVar, 3000);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="loading">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   return (
     <div className="app">
-      <textarea
-        className="textarea"
-        value={markdown}
-        onChange={(e) => setMarkdown(e.target.value)}
-        placeholder="Enter Markdown here..."
-      />
-      <div className="preview">
-        <ReactMarkdown>{markdown}</ReactMarkdown>
-      </div>
+      <textarea className="textarea" onChange={handleChange} />
+      <ReactMarkdown className="preview">{markdown}</ReactMarkdown>
     </div>
   );
-};
+}
 
-export default MarkdownEditor;
-
+export default Markdown;
