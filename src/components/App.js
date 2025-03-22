@@ -17,7 +17,6 @@ function Markdown() {
   useEffect(() => {
     setTimeout(changeLoadingVar, 3000);
   }, []);
-
   if (loading) {
     return (
       <div className="loading">
