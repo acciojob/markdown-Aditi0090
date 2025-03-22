@@ -24,7 +24,6 @@ function Markdown() {
       </div>
     );
   }
-
   return (
     <div className="app">
       <textarea className="textarea" onChange={handleChange} />
